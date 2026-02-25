@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modul 1</title>
+    <style>
+      body {
+        font-family:
+          Source Code Pro,
+          Hack,
+          Consolas,
+          sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .nav-atas {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+      .nav-bawah {
+        background-color: lightblue;
+      }
+      .nav-bawah ul {
+        list-style: none;
+        margin: 0;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+      }
+      .nav-bawah a {
+        text-decoration: none;
+        color: #667eea;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border-radius: 15px;
+      }
+
+      .nav-bawah a:hover {
+        background: #333;
+        color: white;
+        transform: translateY(-2px);
+        padding: 10px 20px;
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      section {
+        background: white;
+        margin-bottom: 50px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      section:hover {
+        transform: translateY(-5px);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 20px;
+        gap: 10px;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        aspect-ratio: 4/3;
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s ease;
+        border-radius: 15px 15px 0px 0px;
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.05);
+      }
+
+      .description {
+        text-decoration: none;
+        text-align: center;
+      }
+      #section1,
+      #section2,
+      #section3,
+      #section4 {
+        scroll-margin-top: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-atas">
+        <h1>Alfian Rasyid El Fahmi (434241047) Modul 1</h1>
+      </div>
+      <div class="nav-bawah">
+        <ul>
+          <li><a href="#section1">Section 1</a></li>
+          <li><a href="#section2">Section 2</a></li>
+          <li><a href="#section3">Section 3</a></li>
+          <li><a href="#section4">Section 4</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div name="Section 1">
+        <h2 id="section1">Header Banner</h2>
+        <p>
+          Display a banner photo (size and orientation are up to you, but
+          landscape orientation is recommended)
+        </p>
+        <section>
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=400&fit=crop"
+            alt="Banner"
+          />
+        </section>
+      </div>
+      <div name="Section 2">
+        <h2>Text Paragraph with Hyperlink</h2>
+        <p>
+          Include a paragraph of text along with a hyperlink to an external
+          website.
+        </p>
+        <section id="section2" style="padding-left: 10px; text-align: center">
+          <p>
+            This is an example of a text paragraph with a hyperlink to
+            <a href="https://github.com/ar-elfahmi">My Github</a>.
+          </p>
+        </section>
+      </div>
+      <div name="Section 3">
+        <h2>Image Gallery with Links</h2>
+        <p>
+          Create a gallery of images with each image linked to a different
+          webpage or resource.
+        </p>
+        <section id="section3">
+          <div class="section-content">
+            <div class="gallery-grid">
+              <a
+                href="https://www.nationalgeographic.com/travel/"
+                class="gallery-item"
+                title="Explore National Geographic Travel"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop"
+                  alt="Solitary traveler standing on mountain peak overlooking vast valley"
+                  loading="lazy"
+                />
+                <div class="description">
+                  <h3>Adventure Awaits</h3>
+                  <p>National Geographic →</p>
+                </div>
+              </a>
+              <a
+                href="https://www.nasa.gov/"
+                class="gallery-item"
+                title="Visit NASA Official Website"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&h=300&fit=crop"
+                  alt="Astronaut floating in space with Earth visible in background"
+                  loading="lazy"
+                />
+                <div class="description">
+                  <h3>Space Exploration</h3>
+                  <p>Visit NASA →</p>
+                </div>
+              </a>
+              <a
+                href="https://www.w3.org/"
+                class="gallery-item"
+                title="Learn about Web Standards at W3C"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=400&h=300&fit=crop"
+                  alt="Laptop displaying code on screen in dark room"
+                  loading="lazy"
+                />
+                <div class="description">
+                  <h3>Web Standards</h3>
+                  <p>Visit W3C →</p>
+                </div>
+              </a>
+              <a
+                href="https://www.un.org/"
+                class="gallery-item"
+                title="Learn about Global Initiatives at UN"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=300&fit=crop"
+                  alt="Diverse group of people holding hands in circle representing unity"
+                  loading="lazy"
+                />
+                <div class="description">
+                  <h3>Global Unity</h3>
+                  <p>Visit United Nations →</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div name="Section 4">
+        <h2>Embedded YouTube Video</h2>
+        <p>Embed a YouTube video of your choice into this section.</p>
+        <section id="section4" style="width: fit-content">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/dD2EISBDjWM?rel=0&modestbranding=1"
+            title="HTML Tutorial for Beginners - YouTube"
+            frameborder="0"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+            "
+            allowfullscreen
+          ></iframe>
+          <p style="text-align: center">HTML Tutorial for Beginners</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

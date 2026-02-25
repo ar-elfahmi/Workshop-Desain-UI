@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Form Pendaftaran Kegiatan Liqo</title>
+  <style>
+    /* reset css bawaan browser */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+    }
+
+    /*css untuk header*/
+    header {
+      background-color: #2c6fad;
+      color: white;
+      text-align: center;
+      padding: 24px 16px;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    /* css untuk kontiner */
+    .container {
+      max-width: 600px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
+
+    /*css untuk card */
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 32px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 24px;
+      color: #2c6fad;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 10px;
+    }
+
+    /* css untuk form */
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: Arial, sans-serif;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #2c6fad;
+      box-shadow: 0 0 0 3px rgba(44, 111, 173, 0.15);
+    }
+
+    input.error,
+    select.error,
+    textarea.error {
+      border-color: #e53e3e;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .error-msg {
+      color: #e53e3e;
+      font-size: 0.8rem;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .error-msg.show {
+      display: block;
+    }
+
+    /*css untuk tombol */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #2c6fad;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-top: 8px;
+    }
+
+    .btn:hover {
+      background-color: #245a90;
+    }
+
+    .btn:active {
+      background-color: #1e4d7a;
+    }
+
+    /* css untuk hasil */
+    #hasil {
+      display: none;
+      background: white;
+      border-radius: 10px;
+      padding: 28px 32px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 24px;
+    }
+
+    #hasil h2 {
+      font-size: 1.1rem;
+      color: #2c6fad;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .success-banner {
+      background-color: #c6f6d5;
+      color: #276749;
+      border-radius: 6px;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .result-row {
+      display: flex;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f4f8;
+      font-size: 0.92rem;
+    }
+
+    .result-row:last-child {
+      border-bottom: none;
+    }
+
+    .result-key {
+      width: 160px;
+      flex-shrink: 0;
+      color: #666;
+      font-size: 0.85rem;
+    }
+
+    .result-val {
+      font-weight: bold;
+      color: #222;
+      word-break: break-word;
+    }
+
+    .btn-reset {
+      display: block;
+      width: 100%;
+      padding: 11px;
+      background-color: white;
+      color: #2c6fad;
+      border: 2px solid #2c6fad;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.2s;
+    }
+
+    .btn-reset:hover {
+      background-color: #eef4fb;
+    }
+
+    /* css untuk footer */
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      font-size: 0.82rem;
+      color: #888;
+    }
+
+    /* MEDIA QUERY — MOBILE  */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.3rem;
+      }
+
+      .card {
+        padding: 22px 18px;
+      }
+
+      #hasil {
+        padding: 22px 18px;
+      }
+
+      .result-key {
+        width: 120px;
+        font-size: 0.8rem;
+      }
+
+      .result-val {
+        font-size: 0.88rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>🎓 Form Pendaftaran Kegitan Liqo</h1>
+    <p>Isi data diri Anda dengan lengkap dan benar</p>
+  </header>
+
+  <!-- FORM CARD -->
+  <div class="container">
+    <div class="card">
+      <h2>Data Diri Mahasiswa</h2>
+
+      <form id="formMahasiswa" novalidate>
+
+        <!-- Nama Lengkap -->
+        <div class="form-group">
+          <label for="nama">Nama Lengkap *</label>
+          <input type="text" id="nama" placeholder="Contoh: Sherlok Homles" />
+          <div class="error-msg" id="err-nama">Nama tidak boleh kosong.</div>
+        </div>
+
+        <!-- NIM -->
+        <div class="form-group">
+          <label for="nim">NIM *</label>
+          <input type="text" id="nim" placeholder="Contoh: 434241000" />
+          <div class="error-msg" id="err-nim">NIM tidak boleh kosong (min. 8 karakter).</div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" placeholder="Contoh: sherlok@email.com" />
+          <div class="error-msg" id="err-email">Masukkan email yang valid.</div>
+        </div>
+
+        <!-- Semester -->
+        <div class="form-group">
+          <label for="semester">Semester *</label>
+          <select id="semester">
+            <option value="">-- Pilih Semester --</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+            <option value="7">Semester 7</option>
+            <option value="8">Semester 8</option>
+          </select>
+          <div class="error-msg" id="err-semester">Pilih semester terlebih dahulu.</div>
+        </div>
+
+        <!-- Fakultas -->
+        <div class="form-group">
+          <label for="prodi">Fakultas *</label>
+          <select id="prodi">
+            <option value="">-- Pilih Fakultas --</option>
+            <option value="Teknik Informatika">Vokasi</option>
+            <option value="Sistem Informasi">Kedokteran</option>
+            <option value="Manajemen Informatika">Farmasi</option>
+            <option value="Teknik Komputer">Ekonomi dan Bisnis</option>
+          </select>
+          <div class="error-msg" id="err-prodi">Pilih Fakultas terlebih dahulu.</div>
+        </div>
+
+        <!-- Catatan -->
+        <div class="form-group">
+          <label for="catatan">Catatan / Pesan</label>
+          <textarea id="catatan" placeholder="Tuliskan pesan atau catatan (opsional)..."></textarea>
+        </div>
+
+        <button type="submit" class="btn">Kirim Data</button>
+      </form>
+    </div>
+
+    <!-- HASIL / RESULT SECTION -->
+    <div id="hasil">
+      <h2>Data Berhasil Dikirim</h2>
+      <div class="success-banner">
+        🎉 Pendaftaran Anda telah berhasil dicatat!
+      </div>
+      <div id="isi-hasil"></div>
+      <button class="btn-reset" onclick="resetForm()">← Isi Form Lagi</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 Sistem Informasi Akademik — Sarjana Terapan
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Ambil elemen form
+    var form = document.getElementById('formMahasiswa');
+
+    // Fungsi validasi satu field
+    // id        = id elemen input
+    // kondisi   = fungsi yang mengembalikan true jika valid
+    // errorId   = id elemen pesan error
+    function validasi(id, kondisi, errorId) {
+      var el  = document.getElementById(id);
+      var err = document.getElementById(errorId);
+
+      if (!kondisi(el.value)) {
+        // Tidak valid: tambahkan class error dan tampilkan pesan
+        el.classList.add('error');
+        err.classList.add('show');
+        return false;
+      } else {
+        // Valid: hapus class error dan sembunyikan pesan
+        el.classList.remove('error');
+        err.classList.remove('show');
+        return true;
+      }
+    }
+
+    // Fungsi cek format email
+    function emailValid(val) {
+      var pola = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return pola.test(val.trim());
+    }
+
+    // Event listener saat form di-submit
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Cegah reload halaman
+
+      // Jalankan validasi semua field wajib
+      var cekNama     = validasi('nama',     function(v) { return v.trim() !== ''; },       'err-nama');
+      var cekNim      = validasi('nim',      function(v) { return v.trim().length >= 8; },  'err-nim');
+      var cekEmail    = validasi('email',    function(v) { return emailValid(v); },         'err-email');
+      var cekSemester = validasi('semester', function(v) { return v !== ''; },              'err-semester');
+      var cekProdi    = validasi('prodi',    function(v) { return v !== ''; },              'err-prodi');
+
+      // Jika semua valid, tampilkan hasil
+      if (cekNama && cekNim && cekEmail && cekSemester && cekProdi) {
+        tampilkanHasil();
+      }
+    });
+
+    // Fungsi untuk mengambil data dari form dan menampilkannya
+    function tampilkanHasil() {
+      // Ambil nilai dari setiap field
+      var nama     = document.getElementById('nama').value.trim();
+      var nim      = document.getElementById('nim').value.trim();
+      var email    = document.getElementById('email').value.trim();
+      var semester = 'Semester ' + document.getElementById('semester').value;
+      var prodi    = document.getElementById('prodi').value;
+      var catatan  = document.getElementById('catatan').value.trim();
+
+      if (catatan === '') {
+        catatan = '(tidak ada)';
+      }
+
+      // Buat objek data
+      var data = {
+        'Nama Lengkap'  : nama,
+        'NIM'           : nim,
+        'Email'         : email,
+        'Semester'      : semester,
+        'Program Studi' : prodi,
+        'Catatan'       : catatan
+      };
+
+      // Buat HTML baris-baris hasil
+      var html = '';
+      for (var key in data) {
+        html += '<div class="result-row">'
+              +   '<span class="result-key">' + key + '</span>'
+              +   '<span class="result-val">'  + data[key] + '</span>'
+              + '</div>';
+      }
+
+      // Masukkan ke section hasil dan tampilkan
+      document.getElementById('isi-hasil').innerHTML = html;
+      document.getElementById('hasil').style.display = 'block';
+
+      // Sembunyikan form
+      document.querySelector('.card').style.display = 'none';
+
+      // Scroll ke bagian hasil
+      document.getElementById('hasil').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Fungsi reset: kembali ke form kosong
+    function resetForm() {
+      // Reset semua nilai form
+      form.reset();
+
+      // Hapus semua tanda error
+      var elError = document.querySelectorAll('.error');
+      for (var i = 0; i < elError.length; i++) {
+        elError[i].classList.remove('error');
+      }
+
+      var pesanError = document.querySelectorAll('.error-msg');
+      for (var j = 0; j < pesanError.length; j++) {
+        pesanError[j].classList.remove('show');
+      }
+
+      // Sembunyikan hasil, tampilkan form kembali
+      document.getElementById('hasil').style.display = 'none';
+      document.querySelector('.card').style.display  = 'block';
+
+      // Scroll ke atas
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
