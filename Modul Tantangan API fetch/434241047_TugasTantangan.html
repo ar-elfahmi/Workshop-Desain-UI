@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Qoute</title>
+    <style>
+        body {
+            margin: 10%;
+            background-color: azure;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1.5rem;
+        }
+
+        button {
+            font-size: 2rem;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: aquamarine;
+            color: rgb(0, 0, 0);
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <h2>My frist API projek by Hand🖐️</h2>
+    <button id="btn" onclick="ambilDataQuote()">Click for Qoute The Day</button>
+
+    <div>
+        <h2 id="qoute"></h2>
+        <h3 id="author"></h3>
+        <p id="date"></p>
+    </div>
+
+    <script>
+        // URL API yang digunakan
+        const API_URL = 'https://motivational-spark-api.vercel.app/api/quotes/random';
+
+        // Ambil elemen-elemen dari HTML (seperti query selector di Laravel/Blade)
+        const btnQuote = document.getElementById('btn');
+        const quoteText = document.getElementById('qoute');
+        const quoteAuthor = document.getElementById('author');
+        const rawData = document.getElementById('date');
+
+        // FUNGSI 1: Fetch Data dari API (Ambil Data)
+        function mintaResponseApi() {
+            return fetch(API_URL);
+            // fetch(API_URL).then(function (response) {
+            //   console.log(response);
+            // });
+        }
+
+        function ubahResponseKeJson(response) {
+            return response.json();
+        }
+
+        function ambilDataPenting(dataJson) {
+            return {
+                quote: dataJson.quote,
+                author: dataJson.author
+            };
+        }
+
+        function tampilkanKeHtml(dataQuote) {
+            quoteText.textContent = dataQuote.quote;
+            quoteAuthor.textContent = `by ${dataQuote.author}.`;
+        }
+
+        async function ambilDataQuote() {
+            // ini fugsi utama saat tombol di klik
+            const response = await mintaResponseApi(); // fungsi ini untuk fetch api
+            const dataJson = await ubahResponseKeJson(response); // standarisasi output jason
+            const dataQuote = ambilDataPenting(dataJson);
+            tampilkanKeHtml(dataQuote);
+        }
+    </script>
+</body>
+</html>
