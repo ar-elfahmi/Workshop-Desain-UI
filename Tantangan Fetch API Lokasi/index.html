@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Wilayah Indonesia | Axios Dependent Dropdown</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <main class="container">
+        <header class="app-header">
+            <h1>Eksplorasi Wilayah Indonesia</h1>
+            <p>Pilih lokasi secara bertahap dari Provinsi hingga Kelurahan.</p>
+        </header>
+
+        <section class="card">
+            <div class="dropdown-group">
+                <label for="provinsi">Provinsi</label>
+                <div class="select-wrapper">
+                    <select id="provinsi">
+                        <option value="0">Pilih Provinsi</option>
+                    </select>
+                    <div class="loader" id="loader-provinsi"></div>
+                </div>
+            </div>
+
+            <div class="dropdown-group">
+                <label for="kota">Kabupaten / Kota</label>
+                <div class="select-wrapper">
+                    <select id="kota">
+                        <option value="0">Pilih Kota</option>
+                    </select>
+                    <div class="loader" id="loader-kota"></div>
+                </div>
+            </div>
+
+            <div class="dropdown-group">
+                <label for="kecamatan">Kecamatan</label>
+                <div class="select-wrapper">
+                    <select id="kecamatan">
+                        <option value="0">Pilih Kecamatan</option>
+                    </select>
+                    <div class="loader" id="loader-kecamatan"></div>
+                </div>
+            </div>
+
+            <div class="dropdown-group">
+                <label for="kelurahan">Kelurahan / Desa</label>
+                <div class="select-wrapper">
+                    <select id="kelurahan">
+                        <option value="0">Pilih Kelurahan</option>
+                    </select>
+                    <div class="loader" id="loader-kelurahan"></div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="app-footer">
+            <p>Data Source: Permendagri No. 72 Tahun 2019</p>
+            <div class="badge">Powered by Axios</div>
+        </footer>
+    </main>
+
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- JS Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
